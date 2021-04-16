@@ -39,7 +39,10 @@ export const token = () => dispatch => {};
 // логин POST /users/login
 export const login = ({ email, password }) => dispatch => {
   dispatch(loginRequest());
-  axios.post('/users/login', { email, password }).then().catch();
+  axios
+    .post('/users/login', { email, password })
+    .then(response => dispatch(loginSuccess(response.data)))
+    .catch(error => dispatch(loginError(error.message)));
 };
 
 // разлогинить POST /users/logout
