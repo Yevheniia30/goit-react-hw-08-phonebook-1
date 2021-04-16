@@ -1,5 +1,5 @@
-// import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 // import Loader from 'react-loader-spinner';
 import s from './App.module.css';
 // import Form from './Components/Form';
@@ -13,24 +13,34 @@ import PhoneBookView from './views/PhoneBookView/PhoneBookView';
 import HomeView from './views/HomeView';
 import LoginView from './views/LoginView';
 import RegisterView from './views/RegisterView';
+import { getCurrentUser } from './redux/auth/auth-operations';
 
-const App = () => {
-  return (
-    <div className={s.App}>
-      <AppBar />
-      {/* <PhoneBookView /> */}
+class App extends Component {
+  componentDidMount() {
+    this.props.onRefreshUser();
+  }
 
-      <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route path="/login" component={LoginView} />
-        <Route path="/register" component={RegisterView} />
-        <Route path="/contacts" component={PhoneBookView} />
-      </Switch>
-    </div>
-  );
+  render() {
+    return (
+      <div className={s.App}>
+        <AppBar />
+
+        <Switch>
+          <Route exact path="/" component={HomeView} />
+          <Route path="/login" component={LoginView} />
+          <Route path="/register" component={RegisterView} />
+          <Route path="/contacts" component={PhoneBookView} />
+        </Switch>
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = {
+  onRefreshUser: getCurrentUser,
 };
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
 
 // class App extends Component {
 //   componentDidMount() {

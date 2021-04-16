@@ -6,10 +6,12 @@ import { logout } from '../../redux/auth/auth-operations';
 import Avatar from '@material-ui/core/Avatar';
 
 const UserMenu = ({ name, onLogout }) => {
+  // const split = name.split(',');
+  // console.log(split);
   return (
     <div className={s.user_menu}>
       {/* <img src={avatar} alt="user's avatar" width="32"></img> */}
-      {/* <Avatar>n</Avatar> */}
+      {/* <Avatar>{name[0]}</Avatar> */}
       <Avatar src="/broken-image.jpg" />
 
       <p>Welcome, {name}</p>

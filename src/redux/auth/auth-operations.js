@@ -9,9 +9,9 @@ import {
   logoutRequest,
   logoutSuccess,
   logoutError,
-  // getCurrentUserRequest,
-  // getCurrentUserSuccess,
-  // getCurrentUserError,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
 } from './auth-actions';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
@@ -76,7 +76,27 @@ export const logout = () => async dispatch => {
 };
 
 // получение текущего пользователя (refresh) GET /users/current
-export const getCurrentUser = () => (dispatch, getState) => {};
+export const getCurrentUser = () => async (dispatch, getState) => {
+  //забираем токен из стейта
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+
+  if (!persistedToken) {
+    return;
+  }
+
+  token.set(persistedToken);
+  dispatch(getCurrentUserRequest());
+
+  try {
+    const response = await axios.get('/users/current');
+
+    dispatch(getCurrentUserSuccess(response.data));
+  } catch (error) {
+    dispatch(getCurrentUserError(error.message));
+  }
+};
 
 // axios
 //   .post('/users/signup', { name, email, password })
