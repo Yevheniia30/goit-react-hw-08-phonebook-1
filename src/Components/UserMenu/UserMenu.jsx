@@ -10,7 +10,6 @@ const UserMenu = ({ name, onLogout }) => {
     <div className={s.user_menu}>
       {/* <img src={avatar} alt="user's avatar" width="32"></img> */}
       <Avatar>{name[0]}</Avatar>
-
       <p>Welcome, {name}</p>
       <button type="button" onClick={onLogout}>
         Logout
