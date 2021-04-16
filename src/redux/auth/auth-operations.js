@@ -9,9 +9,9 @@ import {
   logoutRequest,
   logoutSuccess,
   logoutError,
-  getCurrentUserRequest,
-  getCurrentUserSuccess,
-  getCurrentUserError,
+  // getCurrentUserRequest,
+  // getCurrentUserSuccess,
+  // getCurrentUserError,
 } from './auth-actions';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
