@@ -1,12 +1,21 @@
 import s from './HomeView.module.css';
+import { getIsAuthenticated } from '../../redux/auth/auth-selectors';
+import { connect } from 'react-redux';
 
-const HomeView = () => {
+const HomeView = ({ IsAuthenticated }) => {
   return (
     <div className={s.home_page}>
-      <h1>Welcome! Please register or log into your account</h1>
-      {/* <UserMenu /> */}
+      {IsAuthenticated ? (
+        <h1>My Homepage</h1>
+      ) : (
+        <h1>Welcome! Please register or log into your account</h1>
+      )}
     </div>
   );
 };
 
-export default HomeView;
+const mapStateToProps = state => ({
+  IsAuthenticated: getIsAuthenticated(state),
+});
+
+export default connect(mapStateToProps)(HomeView);

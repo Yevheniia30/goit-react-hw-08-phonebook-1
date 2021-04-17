@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-// import Loader from 'react-loader-spinner';
+import Loader from 'react-loader-spinner';
 import s from './App.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-// import Form from './Components/Form';
-// import ContactsList from './Components/ContactsList';
-// import Filter from './Components/Filter';
 import AppBar from './Components/AppBar';
-// import { getContact } from './redux/phoneBook/phoneBook-operations';
-// import { getLoading, getError } from './redux/phoneBook/phoneBook-selectors';
 import { Switch, Route } from 'react-router-dom';
-import PhoneBookView from './views/PhoneBookView/PhoneBookView';
-import HomeView from './views/HomeView';
-import LoginView from './views/LoginView';
-import RegisterView from './views/RegisterView';
+// import PhoneBookView from './views/PhoneBookView/PhoneBookView';
+// import HomeView from './views/HomeView';
+// import LoginView from './views/LoginView';
+// import RegisterView from './views/RegisterView';
 import { getCurrentUser } from './redux/auth/auth-operations';
 import PrivateRoute from './Components/PrivateRoute';
 import PublicRoute from './Components/PublicRoute';
+
+const HomeView = lazy(() => import('./views/HomeView'));
+const LoginView = lazy(() => import('./views/LoginView'));
+const RegisterView = lazy(() => import('./views/RegisterView'));
+const PhoneBookView = lazy(() => import('./views/PhoneBookView'));
 
 class App extends Component {
   componentDidMount() {
@@ -29,12 +28,24 @@ class App extends Component {
       <div className={s.App}>
         <AppBar />
 
-        <Switch>
-          <Route exact path="/" component={HomeView} />
-          <PublicRoute path="/login" component={LoginView} restricted />
-          <PublicRoute path="/register" component={RegisterView} restricted />
-          <PrivateRoute path="/contacts" component={PhoneBookView} />
-        </Switch>
+        <Suspense
+          fallback={
+            <Loader
+              type="ThreeDots"
+              color="#424141"
+              height={60}
+              width={60}
+              timeout={3000}
+            />
+          }
+        >
+          <Switch>
+            <Route exact path="/" component={HomeView} />
+            <PublicRoute path="/login" component={LoginView} restricted />
+            <PublicRoute path="/register" component={RegisterView} restricted />
+            <PrivateRoute path="/contacts" component={PhoneBookView} />
+          </Switch>
+        </Suspense>
       </div>
     );
   }

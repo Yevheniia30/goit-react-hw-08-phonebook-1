@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.css';
 import { Nav, Navbar } from 'react-bootstrap';
-import PrivateRoute from '../PrivateRoute';
+// import PrivateRoute from '../PrivateRoute';
 import { getIsAuthenticated } from '../../redux/auth/auth-selectors';
 import { connect } from 'react-redux';
 
