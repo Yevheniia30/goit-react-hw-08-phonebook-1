@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import Loader from 'react-loader-spinner';
 import s from './App.module.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import Form from './Components/Form';
 // import ContactsList from './Components/ContactsList';
 // import Filter from './Components/Filter';

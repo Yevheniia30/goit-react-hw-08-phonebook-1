@@ -4,6 +4,7 @@ import s from './UserMenu.module.css';
 import { getUsername } from '../../redux/auth/auth-selectors';
 import { logout } from '../../redux/auth/auth-operations';
 import Avatar from '@material-ui/core/Avatar';
+import { Button } from 'react-bootstrap';
 
 const UserMenu = ({ name, onLogout }) => {
   // const split = name.split(',');
@@ -15,9 +16,9 @@ const UserMenu = ({ name, onLogout }) => {
       <Avatar src="/broken-image.jpg" />
 
       <p>Welcome, {name}</p>
-      <button type="button" onClick={onLogout}>
+      <Button type="button" variant="dark" onClick={onLogout}>
         Logout
-      </button>
+      </Button>
     </div>
   );
 };
