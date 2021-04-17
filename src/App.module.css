@@ -39,6 +39,7 @@
 .App {
   padding: 30px;
   /* width: 800px; */
+  height: 100vh;
   margin: 0 auto;
   background-color: #e8ecee;
   border-radius: 6px;

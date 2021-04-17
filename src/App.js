@@ -16,6 +16,8 @@ import HomeView from './views/HomeView';
 import LoginView from './views/LoginView';
 import RegisterView from './views/RegisterView';
 import { getCurrentUser } from './redux/auth/auth-operations';
+import PrivateRoute from './Components/PrivateRoute';
+import PublicRoute from './Components/PublicRoute';
 
 class App extends Component {
   componentDidMount() {
@@ -29,9 +31,9 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={HomeView} />
-          <Route path="/login" component={LoginView} />
-          <Route path="/register" component={RegisterView} />
-          <Route path="/contacts" component={PhoneBookView} />
+          <PublicRoute path="/login" component={LoginView} restricted />
+          <PublicRoute path="/register" component={RegisterView} restricted />
+          <PrivateRoute path="/contacts" component={PhoneBookView} />
         </Switch>
       </div>
     );

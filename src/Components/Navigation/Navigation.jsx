@@ -1,12 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.css';
 import { Nav, Navbar } from 'react-bootstrap';
+import PrivateRoute from '../PrivateRoute';
+import { getIsAuthenticated } from '../../redux/auth/auth-selectors';
+import { connect } from 'react-redux';
 
-const Navigation = () => {
+const Navigation = ({ IsAuthenticated }) => {
   return (
     // <nav className={s.nav_list}>
-    <Nav variant="pills" className="mr-auto">
-      <Nav.Link>
+    <Nav className=" mr-auto ">
+      <Nav.Item>
         <NavLink
           exact
           to="/"
@@ -15,18 +18,24 @@ const Navigation = () => {
         >
           Home
         </NavLink>
-      </Nav.Link>
-      <Nav.Link>
-        <NavLink
-          to="/contacts"
-          // className={[s['base'], s['link']].join(' ')}
-          // activeClassName={s.active}
-        >
-          Contacts
-        </NavLink>
-      </Nav.Link>
+      </Nav.Item>
+      {IsAuthenticated && (
+        <Nav.Item>
+          <NavLink
+            to="/contacts"
+            // className={[s['base'], s['link']].join(' ')}
+            // activeClassName={s.active}
+          >
+            Contacts
+          </NavLink>
+        </Nav.Item>
+      )}
     </Nav>
   );
 };
 
-export default Navigation;
+const mapStateToProps = state => ({
+  IsAuthenticated: getIsAuthenticated(state),
+});
+
+export default connect(mapStateToProps)(Navigation);
