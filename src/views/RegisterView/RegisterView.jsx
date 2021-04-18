@@ -2,6 +2,7 @@ import { Component } from 'react';
 import s from './RegisterView.module.css';
 import { connect } from 'react-redux';
 import { register } from '../../redux/auth/auth-operations';
+import { Button } from 'react-bootstrap';
 
 class RegisterView extends Component {
   state = {
@@ -12,7 +13,6 @@ class RegisterView extends Component {
 
   handlechange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
-    // console.log(value);
   };
 
   handleSubmit = e => {
@@ -57,16 +57,13 @@ class RegisterView extends Component {
             onChange={this.handlechange}
           ></input>
         </label>
-        <button type="submit">Sign in</button>
+        <Button variant="primary" type="submit">
+          Sign up
+        </Button>
       </form>
     );
   }
 }
-
-// mapStateToProps = state => {};
-// const mapDispatchToProps = dispatch => ({
-//   onSubmit: data => dispatch(register(data)),
-// });
 
 const mapDispatchToProps = {
   onRegister: register,

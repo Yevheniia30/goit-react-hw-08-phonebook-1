@@ -5,8 +5,6 @@ import s from './PhoneBookView.module.css';
 import Form from '../../Components/Form';
 import ContactsList from '../../Components/ContactsList';
 import Filter from '../../Components/Filter';
-// import { getContact } from './redux/phoneBook/phoneBook-operations';
-// import { getLoading, getError } from './redux/phoneBook/phoneBook-selectors';
 import { getContact } from '../../redux/phoneBook/phoneBook-operations';
 import {
   getLoading,

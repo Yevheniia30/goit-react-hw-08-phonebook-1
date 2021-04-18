@@ -10,6 +10,7 @@ import { getFilteredContacts } from '../../redux/phoneBook/phoneBook-selectors';
 
 import PropTypes from 'prop-types';
 import s from './ContactsList.module.css';
+import { Button } from 'react-bootstrap';
 
 const ContactsList = ({ contacts = [], onDelete }) => {
   return (
@@ -18,9 +19,13 @@ const ContactsList = ({ contacts = [], onDelete }) => {
         <li className={s.item} key={id}>
           <span className={s.name}>{name}:</span>{' '}
           <span className={s.number}>{number}</span>
-          <button className={s.btn} onClick={() => onDelete(id)}>
+          <Button
+            className={s.btn}
+            variant="outline-secondary"
+            onClick={() => onDelete(id)}
+          >
             Delete
-          </button>
+          </Button>
         </li>
       ))}
     </ul>

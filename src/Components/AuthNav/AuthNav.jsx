@@ -8,7 +8,6 @@ const AuthNav = () => {
       <Button variant="dark">
         <NavLink
           to="/login"
-
           // className={[s['base'], s['link']].join(' ')}
           // activeClassName={s.active}
         >

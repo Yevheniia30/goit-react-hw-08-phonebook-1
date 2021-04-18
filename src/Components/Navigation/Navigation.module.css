@@ -4,15 +4,15 @@
   list-style: none;
   font-size: bold;
 }
-.base {
-  color: #282c34;
+/* .base {
+  color: #4c6cd46b;
   text-decoration: none;
 }
 .active {
-  color: tomato;
+  color: rgb(31, 41, 175);
   text-decoration: none;
-}
+} */
 .link {
   margin-right: 20px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }

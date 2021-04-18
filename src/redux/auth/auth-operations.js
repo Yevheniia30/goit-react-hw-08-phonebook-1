@@ -97,14 +97,3 @@ export const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(getCurrentUserError(error.message));
   }
 };
-
-// axios
-//   .post('/users/signup', { name, email, password })
-
-//   .then(response => dispatch(registerSuccess(response.data)))
-//   .catch(error => dispatch(registerError(error.message)));
-
-// axios
-//   .post('/users/login', { email, password })
-//   .then(response => dispatch(loginSuccess(response.data)))
-//   .catch(error => dispatch(loginError(error.message)));

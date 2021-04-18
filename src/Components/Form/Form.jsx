@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addContact } from '../../redux/phoneBook/phoneBook-operations';
 import shortid from 'shortid';
 import s from './Form.module.css';
+import { Button } from 'react-bootstrap';
 
 class Form extends Component {
   state = {
@@ -71,9 +72,10 @@ class Form extends Component {
             id={numberInputId}
           />
         </label>
-        <button type="submit" className={s.button}>
+
+        <Button variant="primary" type="submit" className={s.add_btn}>
           Add contact
-        </button>
+        </Button>
       </form>
     );
   }

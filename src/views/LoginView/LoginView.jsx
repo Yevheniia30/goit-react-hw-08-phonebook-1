@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import s from './LoginView.module.css';
 import { login } from '../../redux/auth/auth-operations';
+import { Button } from 'react-bootstrap';
 
 class LoginView extends Component {
   state = {
@@ -45,7 +46,9 @@ class LoginView extends Component {
             onChange={this.handlechange}
           ></input>
         </label>
-        <button type="submit">Sign in</button>
+        <Button variant="primary" type="submit">
+          Sign in
+        </Button>
       </form>
     );
   }

@@ -2,13 +2,12 @@ import Navigation from '../Navigation';
 import AuthNav from '../AuthNav';
 import UserMenu from '../UserMenu';
 import { Navbar } from 'react-bootstrap';
-import s from './AppBar.module.css';
+// import s from './AppBar.module.css';
 import { connect } from 'react-redux';
 import { getIsAuthenticated } from '../../redux/auth/auth-selectors';
 
 const AppBar = ({ isAuthenticated }) => {
   return (
-    // <header className={s.header}>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand>Phonebook</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -17,7 +16,6 @@ const AppBar = ({ isAuthenticated }) => {
         {isAuthenticated ? <UserMenu /> : <AuthNav />}
       </Navbar.Collapse>
     </Navbar>
-    // </header>
   );
 };
 

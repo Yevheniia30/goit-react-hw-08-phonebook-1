@@ -8,7 +8,7 @@ const HomeView = ({ IsAuthenticated }) => {
       {IsAuthenticated ? (
         <h1>My Homepage</h1>
       ) : (
-        <h1>Welcome! Please register or log into your account</h1>
+        <h1>Welcome! Please register or login to your account</h1>
       )}
     </div>
   );
